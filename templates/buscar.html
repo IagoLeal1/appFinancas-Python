@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar por Categoria</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Buscar Transações por Categoria</h1>
+
+    <form method="POST">
+        <label>Categoria:</label>
+        <input type="text" name="categoria" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if resultados %}
+        <h2>Resultados:</h2>
+        <ul>
+            {% for tipo, valor in resultados %}
+                <li><strong>{{ tipo }}:</strong> R$ {{ valor }} </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <a href="/">Voltar</a>
+</body>
+</html>
